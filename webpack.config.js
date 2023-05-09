@@ -2,25 +2,27 @@
 const path = require('path');
 
 
-const main={
-    mode:"development",
+const App={
+    
+    mode: "development",
 
-    //メインとなるjavascriptファイル
-    entry:"./src/index.js",
-
-    //出力ファイル
+    // メインとなるJavaScriptファイル（エントリーポイント）
+    entry: `./src/App.js`,
+  
+    // ファイルの出力設定
     output: {
-        //出力先ファイル
-        path:path.resolve(__dirname,'public'),
-
-        // 出力ファイル名
-        filename: "index.js"
+      //  出力ファイルのディレクトリ名
+      path: `${__dirname}/calcos/public/javascripts`,
+      // 出力ファイル名
+      filename: "App.js"
     },
 
-    module:{
+    
+
+    module: {
         rules: [
             {
-                test:/\.js$/,
+                test:/\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
@@ -28,7 +30,8 @@ const main={
                         presets: [
                             '@babel/preset-env',
                             '@babel/preset-react'
-                        ]
+                        ],
+                        plugins: ['@babel/plugin-transform-runtime']
                     }
                 }
             },
@@ -39,15 +42,52 @@ const main={
                     {loader:'css-loader'}]
             }
         ]
+    }
+};
+
+const register={
+    
+    mode: "development",
+
+    // メインとなるJavaScriptファイル（エントリーポイント）
+    entry: `./src/register.js`,
+  
+    // ファイルの出力設定
+    output: {
+      //  出力ファイルのディレクトリ名
+      path: `${__dirname}/calcos/public/javascripts`,
+      // 出力ファイル名
+      filename: "register.js"
     },
 
-    devServer: {
-        static: path.join(__dirname, 'public'),
-        compress: true,
-        port: 9000,
-    },
+    
+
+    module: {
+        rules: [
+            {
+                test:/\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            '@babel/preset-env',
+                            '@babel/preset-react'
+                        ],
+                        plugins: ['@babel/plugin-transform-runtime']
+                    }
+                }
+            },
+
+            {
+                test:/\.css$/,
+                use: [{ loader: 'style-loader' },
+                    {loader:'css-loader'}]
+            }
+        ]
+    }
 };
 
 module.exports =[
-    home,marubatsu,main
+    App,register
 ];
