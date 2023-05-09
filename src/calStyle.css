@@ -1,0 +1,20 @@
+.flex-d{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+}
+
+.header{
+    background-color:white;
+    padding-top: 20px;
+    width:100%;
+    font-family:cursive;
+}
+
+button {
+    margin-left: 5px;
+}
+  
+input {
+    margin-right: 5px;
+}
