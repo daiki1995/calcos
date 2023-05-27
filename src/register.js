@@ -1,23 +1,49 @@
 import React,{useState,useEffect} from 'react';
 import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+
+import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
+import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/transitions/slide.css';
 
 import './calStyle.css';
 
 
 function Register(){
     return(
-        <div>
+        <div className="over--reg-container">
             <RegisterHead/>
-            <RegisterMid/>
+            <div className="reg-mid-container">
+                <RegisterMid/>
+            </div>
         </div>
     )
 }
 
 function RegisterHead(){
+
+    function loadMain(){
+        window.location.href='/'
+    }
+
     return(
-        <div className="header">
-            <div>カロリー登録画面</div>
+        <div className="head-reg-css">
+            <div className="head-reg-left-css">
+                <div className="head-reg-title-css">カロリー登録画面</div>
+            </div>
+
+            <div className="head-reg-right-css">
+                <Menu menuButton={<MenuButton>Menu</MenuButton>} transition>
+                        <MenuItem>ログイン</MenuItem>
+                        <MenuItem value="カロリー登録" onClick={(e)=>{loadMain(e)}}>
+                            メイン画面へ
+                        </MenuItem>
+                </Menu>
+            </div>
+
         </div>
+        
+        
     )
 }
 
@@ -95,5 +121,8 @@ function RegisterMid(){
 const root = ReactDOM.createRoot(document.getElementById('calcos'));
 root.render(<CalCos />);*/
 
-window.onload=()=>ReactDOM.render(<Register />,document.getElementById('register'));
+//window.onload=()=>ReactDOM.render(<Register />,document.getElementById('register'));
 //export default CalCos;
+const container = document.getElementById('register');
+const root = createRoot(container);
+root.render(<Register/>);

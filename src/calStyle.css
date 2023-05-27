@@ -1,15 +1,167 @@
+
+
+/*メイン画面のCSS*/
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.head-css{
+    display: flex;
+    flex-direction: row-reverse;
+
+    height:40px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+
+    background-color: #5a5a5a;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-left: 1px solid #000000;
+
+}
+
+.szh-menu-button{
+    margin-right: 1%;
+}
+
+.over-container{
+    background-color: rgb(205, 252, 255);
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.mid-container{
+    background-color: white;
+    margin:10px;
+    margin-top: 40px;
+}
+
+.img-slid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:10%;
+}
+
+.swiper-slide-active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-css{
+    width: 100%;
+    height:10%;
+    background-color:ghostwhite;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 10px; /* ボタンの幅 */
+  height: 10px; /* ボタンの高さ */
+  color: black;
+}
+
+.overView-font{
+    font-size: 20px;
+}
+
+.mid-font{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.midCont-useAbout{
+    display: flex;
+    align-items: flex-start;
+}
+
+.img-useAbout{
+    width: 100%;
+    height:60%;
+}
+
+
+.title-css{
+    text-decoration: underline;
+}
+
+.block-div{
+    width:100%;
+}
+
+/*カロリー登録画面*/
+
+.reg-mid-container{
+    background-color: white;
+    margin:10px;
+    margin-top: 50px;
+}
+
+.over--reg-container{
+    background-color: white;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.head-reg-css{
+    display: flex;
+    flex-direction: row;
+    background-color:white;
+    padding-top: 0%;
+    width:100%;
+    font-family:cursive;
+
+    height:40px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+
+    background-color: #5a5a5a;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-left: 1px solid #000000;
+}
+
+.head-reg-right-css{
+    display: flex;
+    flex-direction: row-reverse;
+
+    width:50%;
+}
+
+.head-reg-left-css{
+    display: flex;
+    flex-direction: row;
+    width:50%;
+}
+
+.head-reg-title-css{
+    color: white;
+    font-size:large;
+}
 .flex-d{
     display: flex;
     flex-direction: row;
     margin: 10px 0;
 }
 
-.header{
-    background-color:white;
-    padding-top: 20px;
-    width:100%;
-    font-family:cursive;
-}
 
 button {
     margin-left: 5px;
@@ -17,4 +169,5 @@ button {
   
 input {
     margin-right: 5px;
+    width:30%;
 }

@@ -6,4 +6,5 @@ router.get('/', function(req, res, next) {
   res.sendfile(process.cwd()+'/calcos/views/register.html');
 });
 
+
 module.exports = router;
