@@ -11,7 +11,7 @@ import './calStyle.css';
 
 function Register(){
     return(
-        <div className="over--reg-container">
+        <div className="over-reg-container">
             <RegisterHead/>
             <div className="reg-mid-container">
                 <RegisterMid/>

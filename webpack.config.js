@@ -88,6 +88,50 @@ const register={
     }
 };
 
+
+const login={
+    
+    mode: "development",
+
+    // メインとなるJavaScriptファイル（エントリーポイント）
+    entry: `./src/login.js`,
+  
+    // ファイルの出力設定
+    output: {
+      //  出力ファイルのディレクトリ名
+      path: `${__dirname}/calcos/public/javascripts`,
+      // 出力ファイル名
+      filename: "login.js"
+    },
+
+    
+
+    module: {
+        rules: [
+            {
+                test:/\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            '@babel/preset-env',
+                            '@babel/preset-react'
+                        ],
+                        plugins: ['@babel/plugin-transform-runtime']
+                    }
+                }
+            },
+
+            {
+                test:/\.css$/,
+                use: [{ loader: 'style-loader' },
+                    {loader:'css-loader'}]
+            }
+        ]
+    }
+};
+
 module.exports =[
-    App,register
+    App,register,login
 ];
