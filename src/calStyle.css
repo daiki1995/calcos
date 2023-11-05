@@ -11,7 +11,7 @@ html, body {
     display: flex;
     flex-direction: row-reverse;
 
-    height:40px;
+    height:5%;
     top: 0;
     left: 0;
     width: 100%;
@@ -125,7 +125,7 @@ html, body {
     width:100%;
     font-family:cursive;
 
-    height:40px;
+    height:5%;
     top: 0;
     left: 0;
     width: 100%;
@@ -174,6 +174,29 @@ input {
 */
 
 /*ログイン画面*/
+
+.head-login-css{
+    display: flex;
+    flex-direction: row;
+    background-color:white;
+    padding-top: 0%;
+    width:100%;
+    font-family:cursive;
+
+    height:5vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+
+    background-color: #5a5a5a;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-left: 1px solid #000000;
+}
+
 .login-over-cont{
     background-color: white;
     position: relative;
@@ -185,17 +208,102 @@ input {
     display: flex;
     justify-content: center; /* 水平方向の中央揃え */
     align-items: center; /* 垂直方向の中央揃え */
-    height: 100vh; /* 必要に応じて調整 */
+    height: 75vh; /* 必要に応じて調整 */
 }
 
 .login-mid-cont{
     display: flex;
     flex-direction: column;
 
-    width: 25%;
+    width: 30%;
 
     border-top: 1px solid #000000;
     border-right: 1px solid #000000;
     border-bottom: 1px solid #000000;
     border-left: 1px solid #000000;
+}
+
+.login-text{
+    margin-left:5%;
+    margin-top:1%;
+}
+
+.login-input{
+    width: 60%;
+    margin:5%;
+}
+
+.login-button{
+    width: 60%;
+    margin:5%;
+}
+
+/*新規登録画面*/
+
+.signup-all-area{
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-head-css{
+    display: flex;
+    flex-direction: row;
+    background-color:white;
+    padding-top: 0%;
+    width:100%;
+    font-family:cursive;
+
+    height:5%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+
+    background-color: #5a5a5a;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-left: 1px solid #000000;
+}
+
+.signup-over-cont{
+    background-color: white;
+    position: relative;
+    top: 5vh;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    height: 50vh; /* 必要に応じて調整 */
+}
+
+.signup-mid-cont{
+    display: flex;
+    flex-direction: column;
+
+    width: 30%;
+
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-left: 1px solid #000000;
+}
+
+.signup-text{
+    margin-left:5%;
+    margin-top:1%;
+}
+
+.signup-input{
+    width: 60%;
+    margin:5%;
+}
+
+.signup-button{
+    width: 60%;
+    margin:5%;
 }

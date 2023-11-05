@@ -58,14 +58,23 @@ function Head(){
         window.location.href='/register'
     }
 
+    function loadLogin(e){
+        window.location.href='/login' 
+    }
+
+    function loadResult(e){
+        window.location.href='./result'
+    }
+
     return(
         <div className="head-css">
             
             <Menu menuButton={<MenuButton>Menu</MenuButton>} transition>
-                <MenuItem>ログイン</MenuItem>
+                <MenuItem value="ログイン" onClick={(e)=>{loadLogin(e)}}>ログイン</MenuItem>
                 <MenuItem value="カロリー登録" onClick={(e)=>{loadRegister(e)}}>
                     カロリー登録
                 </MenuItem>
+                <MenuItem value="結果" onClick={(e=>{loadResult(e)})}>結果</MenuItem>
             </Menu>
             
             

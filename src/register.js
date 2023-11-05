@@ -8,6 +8,11 @@ import '@szhsin/react-menu/dist/transitions/slide.css';
 
 import './calStyle.css';
 
+const defaultUrl='http://'+location.host;
+const loginUrl=defaultUrl+'/register/login';
+const regCalPost=defaultUrl+'/register/regcal';
+
+
 
 function Register(){
     return(
@@ -26,6 +31,14 @@ function RegisterHead(){
         window.location.href='/'
     }
 
+    function loadRegister(){
+        window.location.href='/login'
+    }
+
+    function loadResult(){
+        window.location.href='./result'
+    }
+
     return(
         <div className="head-reg-css">
             <div className="head-reg-left-css">
@@ -34,16 +47,15 @@ function RegisterHead(){
 
             <div className="head-reg-right-css">
                 <Menu menuButton={<MenuButton>Menu</MenuButton>} transition>
-                        <MenuItem>ログイン</MenuItem>
-                        <MenuItem value="カロリー登録" onClick={(e)=>{loadMain(e)}}>
+                        <MenuItem value="ログイン" onClick={(e)=>{loadRegister(e)}}>ログイン</MenuItem>
+                        <MenuItem value="ホーム画面" onClick={(e)=>{loadMain(e)}}>
                             メイン画面へ
                         </MenuItem>
+                        <MenuItem value="結果" onClick={(e=>{loadResult(e)})}>結果</MenuItem>
                 </Menu>
             </div>
 
         </div>
-        
-        
     )
 }
 
@@ -52,16 +64,50 @@ function RegisterMid(){
     const [listItems, setListItems] = useState([[]]);
     const [numberInput, setNumberInput] = useState("");
     const [foods,setFoods]=useState("");
-    const [totalCal,setTotalCal]=useState(0)
+    const [totalCal,setTotalCal]=useState(0);
+    const [user,setUser]=useState("");
+    const [eatDate,setEatDate]=useState();
 
-    
+    function postData(url='',data={}){
+        const req={
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json;charset=utf-8",
+            },
+            body:JSON.stringify(data),
+        }
+
+        return fetch(url,req).then(response => response.json());
+    }
+
+    useEffect(()=>{
+
+        //パスポートのログイン状態を確認して状態によっては違うページを読み込む
+        fetch(loginUrl).then(response=>response.json())
+        .then(function(data){
+            console.log(data.user)
+
+            if(data.user===undefined){
+                console.log("ログインされていません。")
+                alert('ログインされていません。ログイン画面へ移動します。')
+                window.location.href='/login'
+            }else{
+                setUser(data.user)
+            }
+            
+        });
+
+        //日時データの更新
+        setEatDate(getDate());
+        
+    },[])
 
     useEffect(()=>{
         let sumCal=0
         
         listItems.map((row,i)=>{
             if(i!==0){
-                sumCal=sumCal+parseInt(row[1])
+                sumCal=sumCal+parseInt(row[2])
             }
         })
 
@@ -69,7 +115,7 @@ function RegisterMid(){
         
     },[listItems])
 
-  
+    
     const handleNumberInput = (event) => {
         setNumberInput(event.target.value);
     };
@@ -77,14 +123,38 @@ function RegisterMid(){
     const handleFoodInput=(event)=>{
         setFoods(event.target.value)
     };
+
+    function getDate(){
+        let returnEatDate;
+        let now = new Date()
+        let Year=now.getFullYear();
+        let Month=now.getMonth()+1;
+        let Day=now.getDate();
+
+        returnEatDate=Year+'-'+Month+'-'+Day;
+
+        console.log(returnEatDate);
+
+        return returnEatDate;
+    }
+
   
     const handleAddItem = () => {
         if(foods!=='' && numberInput!==''){
+            
+            postData(regCalPost,{user:user,food:foods,cal:numberInput,eat_date:eatDate}).then(data => {
+                console.log(data);
+
+            }).catch(error => console.error(error))
+            
+
+            setEatDate(getDate());
             const newData=[...listItems]
-            newData.push([foods,parseInt(numberInput)])
+            newData.push([eatDate,foods,parseInt(numberInput)])
             setListItems(newData);
             setNumberInput("");
             setFoods("");
+
         }else{
             alert("フードとカロリーは必ず入力してください")
         }
@@ -109,7 +179,7 @@ function RegisterMid(){
             {listItems.map((row, i) => (
                 <div key={i}>
                     {row.map((item, j) => (
-                        <span key={j}>{item}　{(j===1)?'kcal':''}</span>
+                        <span key={j}>{item}　{(j===2)?'kcal':''}</span>
                     ))}
                 </div>
             ))}
