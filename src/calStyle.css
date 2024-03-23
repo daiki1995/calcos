@@ -307,3 +307,9 @@ input {
     width: 60%;
     margin:5%;
 }
+
+.result-month{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* 水平方向の中央揃え */
+}
